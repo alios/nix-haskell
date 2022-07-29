@@ -1,16 +1,15 @@
-{ pkgs ? import ../nixpkgs.nix {} }:
+{ pkgs ? import ../nixpkgs.nix { } }:
 
 let
   inherit (pkgs.haskell) ghcVersion;
 
   hsPkgs = pkgs.haskell.packages.${ghcVersion};
 
-  pkgDrv = hsPkgs.callCabal2nix "nix-haskell" ../.. {};
+  pkgDrv = hsPkgs.callCabal2nix "nix-haskell" ../.. { };
   haskellDeps = pkgDrv.getBuildInputs.haskellBuildInputs;
   ghc = hsPkgs.ghcWithHoogle (_: haskellDeps);
 
-in
-{
+in {
   inherit ghc;
   inherit (hsPkgs) cabal-install hlint;
 }
