@@ -1,6 +1,7 @@
 {
   nixpkgs = builtins.fetchGit {
     url = "https://github.com/NixOS/nixpkgs.git";
-    rev = "826de2e2cc5c3a7de19efae8288b8cf87b92479d";
+    ref = "haskell-updates";
+    rev = "3c0b8e78a9461a680c23a4f3bae0a7d3715bfe01";
   };
 }
