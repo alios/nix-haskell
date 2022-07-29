@@ -14,7 +14,7 @@ in pkgs.mkShell {
     haskellPackages.happy
     haskellPackages.structured-haskell-mode
     haskellPackages.haskintex
-    haskellPackages.htags
+    haskellPackages.hasktags
     stylish-haskell
     hpack
     cabal2nix
