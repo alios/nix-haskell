@@ -3,13 +3,12 @@ nixpkgsSelf: nixpkgsSuper:
 let
   inherit (nixpkgsSelf) pkgs;
 
-  ghcVersion = "ghc8107";
+  ghcVersionNumber = "8107";
+  ghcVersion = "ghc${ghcVersionNumber}";
 
   hsPkgs = nixpkgsSuper.haskell.packages.${ghcVersion}.override {
     overrides = self: super: {
-      # Override ghcide and some of its dependencies since the versions on
-      # Nixpkgs is currently broken.
-
+      # example use a hackage version of a package
       # stylish-haskell = self.callHackage "stylish-haskell" "1.13.0.0" { };
 
       # example don't run tests
@@ -17,10 +16,13 @@ let
     };
   };
 
+  haskell-language-server = nixpkgsSuper.haskell-language-server.override { supportedGhcVersions = [ "${ghcVersionNumber}" ]; };
+
 in {
   haskell = nixpkgsSuper.haskell // {
     inherit ghcVersion;
 
     packages = nixpkgsSuper.haskell.packages // { "${ghcVersion}" = hsPkgs; };
   };
+  haskell-language-server = haskell-language-server;
 }
