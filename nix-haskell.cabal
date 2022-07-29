@@ -60,7 +60,7 @@ library
     -- other-extensions:
 
     -- Other library packages from which modules are imported.
-    build-depends:    aeson, async, base ^>=4.14.3.0, conduit, bytestring, containers, lens, mtl, safe-exceptions, stm, text
+    build-depends:    aeson, async, base ^>=4.16.3.0, conduit, bytestring, containers, lens, mtl, safe-exceptions, stm, text
 
     -- Directories containing source files.
     hs-source-dirs:   src
@@ -80,7 +80,7 @@ executable nix-haskell
 
     -- Other library packages from which modules are imported.
     build-depends:
-        base ^>=4.14.3.0,
+        base ^>=4.16.3.0,
         nix-haskell
 
     -- Directories containing source files.
@@ -103,4 +103,4 @@ test-suite nix-haskell-test
     main-is:          MyLibTest.hs
 
     -- Test dependencies.
-    build-depends:    base ^>=4.14.3.0
+    build-depends:    base ^>=4.16.3.0
