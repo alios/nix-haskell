@@ -10,9 +10,15 @@ in pkgs.mkShell {
     haskell.cabal-install
     haskell.ghc
     haskell.hlint
+    haskellPackages.alex
+    haskellPackages.happy
+    haskellPackages.structured-haskell-mode
+    haskellPackages.haskintex
+    haskellPackages.htags
     stylish-haskell
+    hpack
+    cabal2nix
     zlib
-    # Other dependencies such as postgresql-12_x would go here.
   ];
 
   # Use the libraries from the derivation created by ghcWithHoogle.
