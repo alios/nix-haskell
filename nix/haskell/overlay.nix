@@ -3,7 +3,7 @@ nixpkgsSelf: nixpkgsSuper:
 let
   inherit (nixpkgsSelf) pkgs;
 
-  ghcVersion = "ghc923";
+  ghcVersion = "ghc924";
 
   hsPkgs = nixpkgsSuper.haskell.packages.${ghcVersion}.override {
     overrides = self: super: {
@@ -15,7 +15,7 @@ let
       # compiler bug on aarch64 causes retry test to fail. should be fixed in ghc 9.2.4
       # see https://github.com/Soostone/retry/issues/78
       # and https://gitlab.haskell.org/ghc/ghc/-/issues/21624
-      retry = pkgs.haskell.lib.dontCheck (self.callHackage "retry" "0.9.3.0" {});
+      # retry = pkgs.haskell.lib.dontCheck (self.callHackage "retry" "0.9.3.0" {});
     };
   };
 
